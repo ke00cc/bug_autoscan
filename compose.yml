@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  orchestrator:
+    build: .
+    volumes:
+      - ./results:/app/results
+      - ./config:/app/config
+    environment:
+      - SCOPE_FILE=config/targets.txt
+    command: ["python", "-m", "orchestrator.main", "--scope", "config/targets.txt"]
